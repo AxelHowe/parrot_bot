@@ -52,17 +52,17 @@ def callback():
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    # 轉換成 dict 格式
-    req = request.get_json()
-    print(req)
-    # 取得回覆文字
-    reText = req["queryResult"]["fulfillmentText"]
-    print(reText)
-    # 在回覆的文字後方加上(webhook)識別
-    return {
-        "fulfillmentText": f"{reText} (webhook)",
-        "source": "webhookdata"
-    }
+    # 轉換成 dict 格式
+    req = request.get_json()
+    print(req)
+    # 取得回覆文字
+    reText = req["queryResult"]["fulfillmentText"]
+    print(reText)
+    # 在回覆的文字後方加上(webhook)識別
+    return {
+        "fulfillmentText": f"{reText} (webhook)",
+        "source": "webhookdata"
+    }
 
 # line bot 訊息接收處
 @handler.add(MessageEvent, message=TextMessage)
